@@ -1,7 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, Routes, Route } from "react-router-dom";
 import './App.css';
-
-
+import {Home} from './pages/Home';
+import {Login } from "./pages/Login";
+import {Register} from './pages/Register';
+import {PrivateRoute} from './routes/PrivateRoute';
+import {PublicRoute} from './routes/PublicRoute';
+ 
 function App() {
   return (
     <div className="App">
@@ -21,6 +25,16 @@ function App() {
          </ul>
        </nav>
       </header>
+      <main>
+        {/*Switch=> Router
+        exaact=> -
+        component => element*/}
+        <Routes>
+<Route path="/" element={<PrivateRoute/>}/>
+<Route path="/login" element={<PublicRoute/>}/>
+<Route path="/register" element={<PublicRoute/>}/>
+        </Routes>
+      </main>
     </div>
   );
 }
