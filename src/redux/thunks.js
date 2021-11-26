@@ -17,6 +17,8 @@ export const registerThunk = createAsyncThunk(
               },
             body: JSON.stringify(user),
     });
+    const data = await response.json();
+    return data; //action.payload
     } catch(err) {
         rejectWithValue({ error: err.message });
     }

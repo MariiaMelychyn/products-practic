@@ -1,4 +1,5 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {createSlice} from '@reduxjs/toolkit';
+import {registerThunk} from './thunks'
 const BASE_USER_URL = `https://connections-api.herokuapp.com`;
 const userLogin = './users/login';
 const userRegister = './users/signup';
@@ -15,15 +16,38 @@ initialState: {
     isAuth: false,
     myProp: 'Hello',
 },
-reducers:{
-    ["renameProp"] : (state, action) => {
-        return  {
-            ...state,
-         myProp: action.payload,
-        };
+ reducers: {
+    renameProp: (state, action) => {
+      return {
+        ...state,
+        myProp: action.payload,
+      };
     },
-}
-// extraReducers:{},
+  },
+extraReducers: {
+    [registerThunk.pending](state, action){
+        return{
+            ...state,
+            isLoading: true,
+        }
+    },
+    [registerThunk.fulfilled](state, action){
+        return{
+            ...state,
+            isLoading: false,
+            user: action.payload.user,
+            token: action.payload.token,
+            isAuth: true,
+    };
+},
+    [registerThunk.rejected](state, action){
+        return {
+            ...state,
+            isLoading: false,
+            error: action.payload,
+        }
+    },
+},
 });
 export const {renameProp} = authSlice.actions;
 export default authSlice.reducer;
