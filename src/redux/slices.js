@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit'
 const BASE_USER_URL = `https://connections-api.herokuapp.com`;
 const userLogin = './users/login';
-const userRegister = './users/register';
+const userRegister = './users/signup';
 const userLogout = './users/logout';
 const userCurrent = './users/current';
 
@@ -12,18 +12,21 @@ initialState: {
     token: '',
     error: null,
     isLoading: false,
-    isAuth: false
+    isAuth: false,
+    myProp: 'Hello',
 },
 reducers:{
-    'zxzxzx': (state, action)=>>{
-        return : {
+    ["renameProp"] : (state, action) => {
+        return  {
             ...state,
-        }
-    }
+         myProp: action.payload,
+        };
+    },
 }
-extraReducers:{}
-})
-
+// extraReducers:{},
+});
+export const {renameProp} = authSlice.actions;
+export default authSlice.reducer;
 //=============PRODUCTS
 const BASE_PRODUCT_URL = `https://619d2ffb131c600017088dd7.mockapi.io/api/v1/`;
 const products = `/products`;
