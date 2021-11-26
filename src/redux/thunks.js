@@ -17,7 +17,8 @@ export const registerThunk = createAsyncThunk(
               },
             body: JSON.stringify(user),
     });
-    console.log("response" response);
-    } catch(err) {}
+    } catch(err) {
+        rejectWithValue({ error: err.message });
+    }
 }
 );
