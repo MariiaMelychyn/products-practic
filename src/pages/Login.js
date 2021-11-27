@@ -23,7 +23,7 @@ export function Login(){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const user ={ email, password}
+        const user ={ email, password};
         dispatch(loginThunk(user));
         reset();
     };
@@ -39,7 +39,7 @@ export function Login(){
         <form onSubmit={handleSubmit}>
        
         <br/>
-        <input type='email' name='email' value={email} placeholder='email' onChange={handleChange}/>
+        <input type='mail' name='email' value={email} placeholder='email' onChange={handleChange}/>
         <br/>
         <input type='password' name='password' value={password} placeholder='password' onChange={handleChange}/>
         <br/>
