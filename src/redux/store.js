@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './slices';
-import { persistStore,
+import { 
+    persistStore,
     persistReducer,
     FLUSH,
     REGISTER,
@@ -21,7 +22,8 @@ export const store = configureStore({
     reducer: {
         auth: authPersistReducer,
     },
-    middleware: (getDefaultMiddleware)=> getDefaultMiddleware({
+    middleware: (getDefaultMiddleware)=> 
+    getDefaultMiddleware({
         serializbleChtck:{
             ignoreAction: [ FLUSH,
                 REGISTER,

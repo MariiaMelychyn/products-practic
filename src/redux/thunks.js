@@ -1,10 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const BASE_USER_URL = `https://connections-api.herokuapp.com`;
-const userLogin = './users/login';
 const userRegister = './users/signup';
-const userLogout = './users/logout';
+const userLogin = './users/login';
 const userCurrent = './users/current';
+const userLogout = './users/logout';
+
 
 export const registerThunk = createAsyncThunk(
     "users/register",

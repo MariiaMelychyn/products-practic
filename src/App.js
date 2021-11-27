@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { currentThunk, logoutThunk } from "./redux/thunks";
 
 const isAuth = false;
+
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
