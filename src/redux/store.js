@@ -20,6 +20,16 @@ const authPersistReducer = persistReducer(authPersistCongig, authReducer)
 export const store = configureStore({
     reducer: {
         auth: authPersistReducer,
-    }
-})
+    },
+    middleware: (getDefaultMiddleware)=> getDefaultMiddleware({
+        serializbleChtck:{
+            ignoreAction: [ FLUSH,
+                REGISTER,
+                PAUSE,
+                REHYDRATE,
+                PERSIST,
+                PURGE],
+        },
+    }),
+});
 export const persistor = persistStore(store);

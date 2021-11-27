@@ -5,10 +5,20 @@ import {Login } from "./pages/Login";
 import {Register} from './pages/Register';
 import {PrivateRoute} from './routes/PrivateRoute';
 import {PublicRoute} from './routes/PublicRoute';
- 
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { currentThunk, logoutThunk } from "./redux/thunks";
 
 const isAuth = false;
 function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(currentThunk());
+  }, [dispatch]);
+  const handleLogout = () => {
+    console.log(`click`);
+    dispatch(logoutThunk());
+  };
   return (
     <div className="App">
       <header className="App-header">
@@ -23,6 +33,7 @@ function App() {
            <li>
             <Link to="/register">Register</Link>
            </li>
+           <li><button type='button' onClick={handleLogout}>Log Out</button></li>
            
          </ul>
        </nav>
